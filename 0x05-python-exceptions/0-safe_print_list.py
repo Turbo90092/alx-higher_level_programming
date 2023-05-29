@@ -1,13 +1,12 @@
-#!/usr/bin/python3
+from __future__ import print_function
+import sys
 
-def safe_print_list(my_list=[], x=0):
+
+def safe_function(fct, *args):
     try:
-        count = 0
-        for i in range(x):
-            print(f"{my_list[i]}", end='')
-            count += 1
-    except IndexError:
-        pass
-    finally:
-        print()
-        return (count)
+        res = fct(*args)
+    except Exception as e:
+        print("Exception: {}".format(e), file=sys.stderr)
+        return None
+    else:
+        return res
